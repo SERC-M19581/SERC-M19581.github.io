@@ -1,0 +1,7 @@
+# Site details
+title: M19581 Data Engineering
+description: Course materials for M19581 Data Engineering
+url: https://serc-m19581-labs.github.io/docs # TODO: update URL when site moved
+
+# Theme
+theme: just-the-docs
