@@ -1,0 +1,28 @@
+// define styling for inline icons
+// Path: _sass/custom/variables.scss
+
+@mixin icon($name) {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-bottom: -0.125em;
+    font-style: normal;
+    background-color: currentColor;
+    fill: currentColor;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url(../svg/icon-#{$name}.svg);
+    mask-image: url(../svg/icon-#{$name}.svg);
+}
+
+.icon-github {
+    @include icon('github');
+}
+
+// creative commons icons
+.icon-cc {
+    @include icon('creative-commons');
+}
+.icon-cc0 {
+    @include icon('creative-commons-zero');
+}
