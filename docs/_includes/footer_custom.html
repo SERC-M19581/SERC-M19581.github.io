@@ -1,0 +1,18 @@
+<div id="page-edit-block" class="text-small text-grey-dk-000">
+    <p>
+        Page last modified: {% last_modified_at %Y-%m-%d %}
+        &middot;
+        Spot a mistake or want to suggest an improvement? <a href="{{ site.gh_repository }}/edit/main/docs{% if page.collection and site.collections_dir %}/{{ site.collections_dir }}{% endif %}/{{ page.path }}" id="edit-this-page"><i class="icon-github"></i> Edit this page on GitHub</a>.
+    </p>
+</div>
+
+<div id="copyright-notice" class="text-grey-dk-000">
+    <!-- <div class="text-normal pt-4">
+        <i class="icon-cc"></i> <i class="icon-cc0"></i>
+    </div> -->
+    <div class="text-small">
+        <p class="mt-0 pt-0">
+        Unless otherwise noted, all content on this site is licensed under <!--<a href="https://creativecommons.org/publicdomain/zero/1.0/">--><i class="icon-cc"></i> <i class="icon-cc0"></i> Creative Commons Attribution 1.0 Universal (CC0 1.0)<!--</a>-->.
+        </p>
+    </div>
+</div>
