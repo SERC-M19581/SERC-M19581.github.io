@@ -19,6 +19,10 @@
     @include icon('github');
 }
 
+.icon-moodle {
+    @include icon('moodle');
+}
+
 // creative commons icons
 .icon-cc {
     @include icon('creative-commons');
