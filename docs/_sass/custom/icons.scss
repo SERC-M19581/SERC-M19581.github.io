@@ -7,8 +7,8 @@
     height: 1em;
     margin-bottom: -0.125em;
     font-style: normal;
-    background-color: currentColor;
-    fill: currentColor;
+    background-color: currentcolor;
+    fill: currentcolor;
     -webkit-mask-size: cover;
     mask-size: cover;
     -webkit-mask-image: url(../svg/icon-#{$name}.svg);
@@ -23,6 +23,7 @@
 .icon-cc {
     @include icon('creative-commons');
 }
+
 .icon-cc0 {
     @include icon('creative-commons-zero');
 }
