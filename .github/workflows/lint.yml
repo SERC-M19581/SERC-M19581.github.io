@@ -26,6 +26,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: ${{ github.event_name != 'pull_request' }}
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MARKDOWN_CONFIG_FILE: ../../.markdownlint.yml
           VALIDATE_CSS: true
           VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_HTML: true
