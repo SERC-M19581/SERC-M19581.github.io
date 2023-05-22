@@ -6,3 +6,24 @@ url: https://serc-m19581-labs.github.io/docs # TODO: update URL when site moved
 # Theme
 theme: just-the-docs
 color_scheme: serc
+
+# Footer content
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+
+mermaid:
+  version: "10.1.0"
+
+kramdown:
+  syntax_highlighter: rouge
+  parse_block_html: true
+
+callouts:
+  solution:
+    title: Solution
+    color: green
+callouts_opacity: 0.1
+
+plugins:
+  - jekyll-last-modified-at
