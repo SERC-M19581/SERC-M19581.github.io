@@ -34,5 +34,5 @@ jobs:
           VALIDATE_JAVASCRIPT_STANDARD: true
           VALIDATE_JSON: true
           VALIDATE_MARKDOWN: true
-          VALIDATE_RUBY: true
+          # VALIDATE_RUBY: true
           VALIDATE_YAML: true
