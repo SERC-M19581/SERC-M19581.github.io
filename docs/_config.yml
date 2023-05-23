@@ -1,7 +1,10 @@
 # Site details
 title: M19581 Data Engineering
 description: Course materials for M19581 Data Engineering
-url: https://serc-m19581-labs.github.io/docs # TODO: update URL when site moved
+url: https://serc-m19581.github.io
+gh_repository: https://github.com/SERC-M19581/SERC-M19581.github.io
+gh_org: https://github.com/SERC-M19581
+moodle_page: https://moodle2.serc.ac.uk/course/view.php?id=28516
 
 # Theme
 theme: just-the-docs
