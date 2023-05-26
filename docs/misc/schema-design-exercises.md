@@ -13,6 +13,7 @@ Practice exercises for designing data warehouse schemas.
 
 
 Possible solutions are provided under the collapsed "Solution" section for each exercise. (Note: The diagrams are created using [Mermaid](https://mermaid.js.org/syntax/entityRelationshipDiagram.html). Mermaid only supports `PK`, `FK`, and `UK` as keys. `FK` is used in place of surrogate keys and `UK` is used in place of alternate keys.)
+(Note: diagrams don't render correctly in Firefox.)
 
 ## Table of Contents
 {: .no_toc .text-delta }
@@ -99,9 +100,9 @@ erDiagram
 >
 > ```mermaid
 > erDiagram
->     FactOrders ||--|{ DimCustomers : "placed"
->     FactOrders ||--|{ DimProducts : "ordered"
->     FactOrders ||--|{ DimDates : "ordered"
+>     FactOrders }|--|| DimCustomers : "placed"
+>     FactOrders }|--|| DimProducts : "ordered"
+>     FactOrders }|--|| DimDates : "ordered"
 >
 >     FactOrders {
 >         int order_key PK
@@ -149,12 +150,12 @@ erDiagram
 >
 > ```mermaid
 > erDiagram
->     FactOrders ||--|{ DimCustomers : "placed"
->     FactOrders ||--|{ DimProducts : "ordered"
->     FactOrders ||--|{ DimDates : "ordered"
->     DimReviews ||--o{ DimProducts : "reviewed"
->     DimReviews ||--o{ DimCustomers : "reviewed"
->     DimReviews ||--o{ DimDates : "reviewed"
+>     FactOrders }|--|| DimCustomers : "placed"
+>     FactOrders }|--|| DimProducts : "ordered"
+>     FactOrders }|--|| DimDates : "ordered"
+>     DimReviews }|--|| DimProducts : "reviewed"
+>     DimReviews }|--|| DimCustomers : "reviewed"
+>     DimReviews }|--|| DimDates : "reviewed"
 >
 >     FactOrders {
 >         int order_key PK
@@ -308,13 +309,13 @@ The following data needs to be stored in the data warehouse:
 >
 > ```mermaid
 > erDiagram
->     FactAppointments ||--|{ DimPatients : "patient"
->     FactAppointments ||--|{ DimDoctors : "doctor"
->     FactAppointments ||--|{ DimDepartments : "department"
->     FactAppointments ||--|{ DimDate : "appointment"
->     DimMedicalRecords ||--o{ DimPatients : "patient"
->     DimMedicalRecords ||--o{ DimDoctors : "doctor"
->
+>     FactAppointments }|--|| DimPatients : "patient"
+>     FactAppointments }|--|| DimDoctors : "doctor"
+>     FactAppointments }|--|| DimDepartments : "department"
+>     FactAppointments }|--|| DimDate : "appointment"
+>     DimMedicalRecords }|--|| DimPatients : "patient"
+>     DimMedicalRecords }|--|| DimDoctors : "doctor"
+> 
 >     FactAppointments {
 >         int appointment_key PK
 >         int appointment_id UK
@@ -324,7 +325,7 @@ The following data needs to be stored in the data warehouse:
 >         int appointment_date FK
 >         time appointment_time
 >     }
->
+> 
 >     DimPatients {
 >         int patient_key PK
 >         int patient_id UK
@@ -339,7 +340,7 @@ The following data needs to be stored in the data warehouse:
 >         varchar zip_code
 >         varchar country
 >     }
->
+> 
 >     DimDoctors {
 >         int doctor_key PK
 >         int doctor_id UK
@@ -350,14 +351,14 @@ The following data needs to be stored in the data warehouse:
 >         int department_key FK
 >         varchar specialisation
 >     }
->
+> 
 >     DimDepartments {
 >         int department_key PK
 >         int department_id UK
 >         varchar department_name
 >         varchar location
 >     }
->
+> 
 >     DimDate {
 >         int date_key PK
 >         date date
@@ -365,7 +366,7 @@ The following data needs to be stored in the data warehouse:
 >         int month
 >         int year
 >     }
->
+> 
 >     DimMedicalRecords {
 >         int medical_record_key PK
 >         int medical_record_id UK
@@ -377,7 +378,6 @@ The following data needs to be stored in the data warehouse:
 >         varchar treatment
 >         varchar prescription
 >     }
->
 > ```
 >
 > To create the tables in SQL Server (Remember, dimension tables should be created before the fact table):
@@ -491,12 +491,12 @@ The following data needs to be stored in the data warehouse:
 >
 > ```mermaid
 > erDiagram
->     FactTransactions ||--|{ DimCustomers : "has"
->     FactTransactions ||--|{ DimAccounts : "has"
->     FactTransactions ||--|{ DimDate : "on"
+>     FactTransactions }|--|| DimCustomers : "has"
+>     FactTransactions }|--|| DimAccounts : "has"
+>     FactTransactions }|--|| DimDate : "on"
 >     DimCustomers ||--|{ DimAccounts : "has"
->     DimAccounts ||--|{ DimBranches : "has"
->     DimAccounts ||--|{ DimDate : "opened"
+>     DimAccounts }|--|| DimBranches : "has"
+>     DimAccounts }|--|| DimDate : "opened"
 >
 >     FactTransactions {
 >         int transaction_id PK
@@ -734,16 +734,16 @@ Hint: Recruiters are also employees.
 >
 > ```mermaid
 > erDiagram
->     FactEmployeeMetrics ||--o{ DimEmployees : "EmployeeKey"
->     FactEmployeeMetrics ||--o{ DimMetrics : "MetricKey"
->     FactEmployeeMetrics ||--o{ DimDate : "DateKey"
->     DimEmployees ||--|{ DimDepartments : "DepartmentKey"
->     DimEmployees ||--|{ DimEmployees : "ManagerKey"
->     DimEmployees ||--o{ DimDate : "HireDate"
->     DimTrainings ||--o{ DimEmployees : "EmployeeKey"
->     DimTrainings ||--o{ DimDate : "TrainingDate"
->     DimRecruitments ||--o{ DimEmployees : "RecruiterKey"
->     DimRecruitments ||--o{ DimDate : "RecruitmentDate"
+>     FactEmployeeMetrics }|--|| DimEmployees : "EmployeeKey"
+>     FactEmployeeMetrics }|--|| DimMetrics : "MetricKey"
+>     FactEmployeeMetrics }|--|| DimDate : "DateKey"
+>     DimEmployees }|--|| DimDepartments : "DepartmentKey"
+>     DimEmployees ||--o{ DimEmployees : "ManagerKey"
+>     DimEmployees }|--|| DimDate : "HireDate"
+>     DimTrainings }|--|| DimEmployees : "EmployeeKey"
+>     DimTrainings }|--|| DimDate : "TrainingDate"
+>     DimRecruitments }|--|| DimEmployees : "RecruiterKey"
+>     DimRecruitments }|--|| DimDate : "RecruitmentDate"
 >
 >     FactEmployeeMetrics {
 >         int EmployeeMetricKey PK
@@ -806,12 +806,12 @@ Hint: Recruiters are also employees.
 >
 > ```mermaid
 > erDiagram
->     FactEmployeeMetrics ||--o{ DimEmployees : "EmployeeKey"
->     FactEmployeeMetrics ||--o{ DimMetrics : "MetricKey"
->     DimEmployees ||--|{ DimDepartments : "DepartmentKey"
->     DimEmployees ||--|{ DimEmployees : "ManagerKey"
->     DimTrainings ||--o{ DimEmployees : "EmployeeKey"
->     DimRecruitments ||--o{ DimEmployees : "RecruiterKey"
+>     FactEmployeeMetrics }|--|| DimEmployees : "EmployeeKey"
+>     FactEmployeeMetrics }|--|| DimMetrics : "MetricKey"
+>     DimEmployees }|--|| DimDepartments : "DepartmentKey"
+>     DimEmployees ||--o{ DimEmployees : "ManagerKey"
+>     DimTrainings }o--|| DimEmployees : "EmployeeKey"
+>     DimRecruitments }o--|| DimEmployees : "RecruiterKey"
 >
 >     FactEmployeeMetrics {
 >         int EmployeeMetricKey PK
@@ -1003,11 +1003,11 @@ In order to design the schema, the following questions need to be answered:
 >
 > ```mermaid
 > erDiagram
->     FactInventory ||--o{ DimProducts : "ProductKey"
->     FactInventory ||--o{ DimSuppliers : "SupplierKey"
->     DimOrders ||--o{ DimProducts : "ProductKey"
->     DimOrders ||--o{ DimSuppliers : "SupplierKey"
->     DimShipments ||--o{ DimOrders : "OrderKey"
+>     FactInventory }|--|| DimProducts : "ProductKey"
+>     FactInventory }|--|| DimSuppliers : "SupplierKey"
+>     DimOrders }o--|| DimProducts : "ProductKey"
+>     DimOrders }o--|| DimSuppliers : "SupplierKey"
+>     DimShipments ||--|| DimOrders : "OrderKey"
 >
 >     FactInventory {
 >         int InventoryKey PK
@@ -1056,14 +1056,14 @@ In order to design the schema, the following questions need to be answered:
 >
 > ```mermaid
 > erDiagram
->     FactInventory ||--o{ DimProducts : "ProductKey"
->     FactInventory ||--o{ DimSuppliers : "SupplierKey"
->     FactInventory ||--o{ DimDate : "DateKey"
->     DimOrders ||--o{ DimProducts : "ProductKey"
->     DimOrders ||--o{ DimSuppliers : "SupplierKey"
->     DimOrders ||--o{ DimDate : "OrderDateKey"
+>     FactInventory }|--|| DimProducts : "ProductKey"
+>     FactInventory }|--|| DimSuppliers : "SupplierKey"
+>     FactInventory }|--|| DimDate : "DateKey"
+>     DimOrders }o--|| DimProducts : "ProductKey"
+>     DimOrders }o--|| DimSuppliers : "SupplierKey"
+>     DimOrders }o--|| DimDate : "OrderDateKey"
 >     DimShipments ||--o{ DimOrders : "OrderKey"
->     DimShipments ||--o{ DimDate : "ShipmentDateKey"
+>     DimShipments }o--|| DimDate : "ShipmentDateKey"
 >
 >     FactInventory {
 >         int InventoryKey PK
